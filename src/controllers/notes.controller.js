@@ -8,7 +8,6 @@ notesCtrl.renderNoteForm = (req, res) => {
 notesCtrl.createNewNote = async (req, res) => {
   const { title, description } = req.body;
   const newNote = new Note({ title, description, user: req.user._id });
-  console.log(newNote);
   await newNote.save();
   req.flash('success_msg', 'Note added successfully');
   res.redirect('/notes');
