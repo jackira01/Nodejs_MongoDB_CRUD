@@ -5,10 +5,7 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
 const passport = require('passport');
-
-const { MONGODB_URI } = process.env;
 
 //initializations
 const app = express();
@@ -39,7 +36,6 @@ app.use(
     secret: 'secret',
     resave: true,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: MONGODB_URI }),
   })
 );
 app.use(passport.initialize());
